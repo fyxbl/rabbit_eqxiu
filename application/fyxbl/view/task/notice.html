@@ -1,0 +1,73 @@
+<style>
+    .profile-avatar-container {
+        position:relative;
+        width:100px;
+    }
+    .profile-avatar-container .profile-user-img{
+        width:100px;
+        height:100px;
+    }
+    .profile-avatar-container .profile-avatar-text {
+        display:none;
+    }
+    .profile-avatar-container:hover .profile-avatar-text {
+        display:block;
+        position:absolute;
+        height:100px;
+        width:100px;
+        background:#444;
+        opacity: .6;
+        color: #fff;
+        top:0;
+        left:0;
+        line-height: 100px;
+        text-align: center;
+    }
+    .profile-avatar-container button{
+        position:absolute;
+        top:0;left:0;width:100px;height:100px;opacity: 0;
+    }
+</style>
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">{:__('Bulletin information')}</h2>
+
+
+                    {foreach $row as $key=>$vo }
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b class="panel-title">
+                                <span class="label label-success col-md-2">{$vo.create_time|date='Y-m-d',###}<br>{$vo.create_time|date='H:i',###}  </span>
+
+                                <label class="col-md-1"></label>
+
+
+                                <label href="#">
+                                    {if ( $config.language == 'zh-cn')}
+                                    {$vo.msg}
+                                    {else /}
+                                    {$vo.enmsg}
+                                    {/if}
+                                </label>
+                            </b>
+                        </div>
+                    </div>
+                    {/foreach}
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+</script>

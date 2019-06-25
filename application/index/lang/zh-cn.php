@@ -126,4 +126,28 @@ return [
     'You have no permission'                                 => '你没有权限访问',
     'An unexpected error occurred'                           => '发生了一个意外错误,程序猿正在紧急处理中',
     'This page will be re-directed in %s seconds'            => '页面将在 %s 秒后自动跳转',
+    'Tribal center'                                          => '部落中心',
+    'Designer'                                               => '设计师',
+    'Adaptation'                                             => '自适应',
+    'Layer'                                                  => '图层',
+    'Copy'                                                   => '复制',
+    'Music'                                                  => '音乐',
+    'Language'                                               => '多语言',
+    'Bulletin information'                                   => '公告消息',
+    'You are not logged in'                                  => '您没有登录',
+    'Inherit the background music of multi platform works, the follow-up will support the trigger sound effect'   => '继承多平台作品背景音乐、后续将支持触发音效',
+
+    'Save designer time, multi platform data analysis compatible conversion'
+                                                             => '节省设计师的时间、多平台数据分析兼容转换',
+    'Save designer time, multi platform data analysis compatible conversion,create higher efficiency'
+                                                             => '节省设计师时间，多平台数据分析兼容转换，创造更高效率',
+    'Platform size and location compatible, supporting long pages, many elements, many pages, many animations'
+                                                             => '平台尺寸以及位置兼容，支持长页面，多元素,多页面，多动画',
+    'Inherit all layers, layer names are classified according to type, and layers are arranged according to hierarchy. Note: the hidden layer will also appear'
+                                                             => '继承所有图层，图层名字按照类型分类，图层按照层次序列。注：隐藏图层也会显现',
+    'The same platform supports copy operation, and all works can be copied to your work list'
+                                                             => '同一个平台支持复制操作，所有作品可原封不动的复制到你的作品列表里',
+    'This program has high scalability, can quickly analyze data and transfer to the platform, and the function will increase rapidly in the future'
+                                                             => '本程序扩展性高，可快速分析数据并且转移到平台，日后功能会迅速增加'
+
 ];

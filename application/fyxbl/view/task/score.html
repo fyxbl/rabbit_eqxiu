@@ -1,0 +1,73 @@
+<style>
+    .profile-avatar-container {
+        position:relative;
+        width:100px;
+    }
+    .profile-avatar-container .profile-user-img{
+        width:100px;
+        height:100px;
+    }
+    .profile-avatar-container .profile-avatar-text {
+        display:none;
+    }
+    .profile-avatar-container:hover .profile-avatar-text {
+        display:block;
+        position:absolute;
+        height:100px;
+        width:100px;
+        background:#444;
+        opacity: .6;
+        color: #fff;
+        top:0;
+        left:0;
+        line-height: 100px;
+        text-align: center;
+    }
+    .profile-avatar-container button{
+        position:absolute;
+        top:0;left:0;width:100px;height:100px;opacity: 0;
+    }
+</style>
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">{:__('Integral record')}</h2>
+
+                    <div class=" table-responsive" ondragover="">
+                        <table class="table">
+                            <thead>
+                                <th >{:__('Change integral')}</th>
+                                <th >{:__('Before change')}</th>
+                                <th >{:__('After change')}</th>
+                                <th >{:__('Cause change')}</th>
+                                <th >{:__('Change time')}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            {foreach $score_log as $ov|}
+                            <tr {gt	 name="$ov.score" value="0"} style="color: #339900" {else/}  style="color: #fa0000" {/gt}>
+                                <td>{$ov.score}</td>
+                                <td>{$ov.before}</td>
+                                <td>{$ov.after}</td>
+                                <td>{:__($ov.memo)}</td>
+                                <td>{$ov.createtime|date='y-m-d h:i:s',###}</td>
+
+                            </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+                        <div style="text-align: center;">{$score_log_page}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

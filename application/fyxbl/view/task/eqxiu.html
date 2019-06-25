@@ -1,0 +1,154 @@
+<div id="content-container" class="container ">
+    <div class="row">
+
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default col-md-12">
+                <div class="panel-body">
+                    <h2 class="">{:__('User profile')}</h2>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>{:__('Lv')}</th>
+                            <td class="col-md-2"><a href="javascript:;" class="viewlv">{$user.level}</a></td>
+                            <th>{:__('Score')}</th>
+                            <td class="col-md-2"><a href="javascript:;" class="viewscore">{$user.score}</a></td>
+                        </tr>
+                        <tr>
+                            <th>{:__('Email')}</th>
+                            <td class="col-md-2">{$user.email}</td>
+                            <th>{:__('Mobile')}</th>
+                            <td class="col-md-2">{$user.mobile}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="container panel panel-default col-md-5">
+                <div class="panel-body">
+                    <h3 class="form-header">{:__('Public account')}<label style="color: #1e425d;font-size: 12px"></label>
+                    </h3>
+
+                    {if $eqxiu->success}
+                    <form name="form" id="logout-form" class="form-horizontal" role="form" data-toggle="validator"
+                          method="POST" action="{:url('fyxbl/task/logout_eqxiu')}">
+                        {:token()}
+                        <hr>
+                        <div class="form-group input-group center-block">
+                            <li class="list-group-item"><i class="fa fa-address-card"></i>&emsp;{:__('User id')} :
+                                <label>
+                                    {$eqxiu->obj->loginName}
+                                </label>
+                            </li>
+                        </div>
+
+                        <div class="form-group input-group center-block">
+                            <li class="list-group-item"><i class="fa fa-group"></i>&emsp;{:__('User name')} :
+                                <label>
+                                    {$eqxiu->obj->name}
+                                </label>
+                            </li>
+                        </div>
+                        <button type="submit" class="btn btn-success center-block">{:__('Sign out')}</button>
+
+                    </form>
+
+                    {else /}
+                    <form name="form" id="login-form" class="form-horizontal" role="form" data-toggle="validator"
+                          method="POST" action="{:url('fyxbl/task/login_eqxiu')}">
+                        {:token()}
+                        <hr>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">账号</span>
+                            <input type="text" class="form-control" name="account">
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">密码</span>
+                            <input type="password" id="password" class="form-control" name="password">
+
+                        </div>
+                        <p class="text-center text-info">
+                            密码错误请5分钟后再试
+                        </p>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success center-block">{:__('Login')}</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="reset" class="btn btn-default center-block">{:__('Reset')}</button>
+                        </div>
+                    </form>
+                    {/if}
+
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="container panel panel-default col-md-6">
+                <div class="panel-body">
+                    <h3 class="form-header">{:__('Available tools')}<label
+                            style="color: #1e425d;font-size: 12px"></label></h3>
+
+                    <form name="form" id="add-task-form" class="form-horizontal" role="form" data-toggle="validator"
+                          method="POST" action="{:url('fyxbl/task/add_task')}">
+                        <hr>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">{:__('Url')}</span>
+                            <input type="text" class="form-control" name="url" id="url" placeholder="{:__('Links to Rabbitpre, Eqxiu, Maka and other links')}"
+                                   oninput="testurl(this)">
+                        </div>
+                        <div style="text-align: center">
+                            <label class="radio-inline">
+                                <input type="radio" name="app" id="eqxiu" value="eqxiu">{:__('From eqxiu copy')}
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="app" id="fyx" value="fyx" disabled="disabled">{:__('Other')}
+                            </label>
+                        </div>
+                        <br>
+                        <p style="color: #fa0000; text-align: center">{:__('Please modify the identification error')}</p>
+                        <div class="form-header">
+                            {if $eqxiu}
+                            <button type="submit" class="btn btn-info center-block">{:__('Add task')}</button>
+                            {else /}
+                            <button type="reset" class="btn btn-default center-block" disabled="disabled">{:__('Please login first')}
+                            </button>
+                            {/if}
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <iframe class="panel-body container panel panel-default col-md-12" src="../tasklist" width="100%"
+                    height="440px" frameborder="no" border="0" marginwidth="0"
+                    marginheight="0" scrolling-x="no"
+                    scrolling-y="auto" allowtransparency="yes">
+            </iframe>
+
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+    function testurl(obj) {
+        if (obj.value.indexOf("eqxiu") > 0) {
+            console.log(obj.value);
+            $("#eqxiu")[0].checked = true;
+        } else if (obj.value.indexOf("rabbitpre") > 0) {
+            $("#rabbitpre")[0].checked = true;
+        } else if (obj.value.indexOf("maka") > 0) {
+            $("#maka")[0].checked = true;
+
+        } else {
+            $("#fyx")[0].checked = true;
+
+        }
+        ;
+    };
+</script>

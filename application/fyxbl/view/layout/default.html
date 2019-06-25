@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+
+    <head>
+        {include file="common/meta" /}
+
+    </head>
+
+    <body style="padding-top: 50px;background: #f5f5f5;">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="/">{$site.name}</a>
+
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">🌟🍀🌷🌱🍁🌸🌹🍂🍃🌺🌻🌴</a>
+                        </li>
+                        {if $user}
+                        <li class="dropdown">
+                            {if $user}
+                            <a href="{:url('/index/user/index')}" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 10px;height: 50px;">
+                                <span class="avatar-img"><img src="__CDN__{$user.avatar}" alt=""></span>
+                            </a>
+                            {else /}
+                            <a href="{:url('task/index')}" class="dropdown-toggle" data-toggle="dropdown">{:__('User center')} <b class="caret"></b></a>
+                            {/if}
+                            <ul class="dropdown-menu">
+                                {if $user}
+                                <li><a href="{:url('/index/user/index')}"><i class="fa fa-user-circle"></i>{:__('User center')}</a></li>
+                                <li><a href="{:url('/index/user/profile')}"><i class="fa fa-user-o"></i>{:__('Profile')}</a></li>
+                                <li><a href="{:url('/index/user/changepwd')}"><i class="fa fa-key"></i>{:__('Change password')}</a></li>
+                                <li><a href="{:url('/index/user/logout')}"><i class="fa fa-sign-out"></i>{:__('Sign out')}</a></li>
+                                {else /}
+                                <li><a href="{:url('/index/user/login')}"><i class="fa fa-sign-in"></i> {:__('Sign in')}</a></li>
+                                <li><a href="{:url('/index/user/register')}"><i class="fa fa-user-o"></i> {:__('Sign up')}</a></li>
+                                {/if}
+
+                            </ul>
+                        </li>
+                        {/if}
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <main class="content">
+            {__CONTENT__}
+        </main>
+
+
+        <footer class="footer" style="clear:both">
+            <p class="copyright">Copyright&nbsp;©&nbsp;2017-2018 {$_SERVER['HTTP_HOST']} All Rights Reserved {$site.name} {:__('Copyrights')} <a href="https://www.miibeian.gov.cn" target="_blank">{$site.beian}</a></p>
+        </footer>
+
+        {include file="common/script" /}
+        <!-- /.container -->
+
+        <!-- jQuery -->
+        <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Script to Activate the Carousel -->
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+    </body>
+
+</html>

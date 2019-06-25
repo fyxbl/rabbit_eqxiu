@@ -1,0 +1,82 @@
+<div id="content-container" class="container ">
+    <div class="row">
+
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default col-md-12">
+                <div class="panel-body">
+                    <h2 class="page-header">{:__('User center')}</h2>
+                    <div class="row user-baseinfo">
+                        <div class="col-md-3 col-sm-3 col-xs-2 text-center user-center">
+                            <a href="{:url('task/profile')}" title="{:__('Click to edit')}">
+                                <span class="avatar-img"><img src="__CDN__{$user.avatar}" alt="" ></span>
+                            </a>
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-10">
+                            <!-- Content -->
+                            <div class="ui-content">
+                                <!-- Heading -->
+                                <h4><a href="{:url('task/profile')}">{$user.username}</a></h4>
+                                <!-- Paragraph -->
+                                <p><a href="{:url('task/profile')}">{$user.bio|default=__("This guy hasn't written anything yet")}</a></p>
+                                <!-- Success -->
+                                <div style="margin-top:15px;">
+                                    <table class="table">
+                                        <tbody><tr>
+                                            <th>{:__('Lv')}</th>
+                                            <td><a href="javascript:;" class="viewlv">{$user.level}</a></td>
+                                            <th>{:__('Score')}</th>
+                                            <td><a href="javascript:;" class="viewscore">{$user.score}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th>{:__('Successions')}</th>
+                                            <td>{$user.successions} {:__('Day')}</td>
+                                            <th>{:__('Maxsuccessions')}</th>
+                                            <td>{$user.maxsuccessions} {:__('Day')}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{:__('Logintime')}</th>
+                                            <td>{$user.logintime|date="Y-m-d H:i:s",###}</td>
+                                            <th>{:__('Prevtime')}</th>
+                                            <td>{$user.prevtime|date="Y-m-d H:i:s",###}</td>
+                                        </tr>
+                                        </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-0 col-pad">
+                            <a href="{:url('task/profile')}" class="btn btn-success hidden-xs"><i class="fa fa-pencil"></i> {:__('Reset profile')}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container panel panel-default col-md-6">
+                <div class="panel-body">
+                    <form method="post" action="../task/rabbit">
+
+                        <p style="color: #d43f3a;text-align: center">若密码错误请5分钟后再试！</p>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">账号</span>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">密码</span>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+
+                        <button type="submit" class="btn btn-default center-block">
+                            登陆账号
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="container panel panel-default col-md-6">
+                内容
+            </div>
+        </div>
+
+    </div>
+</div>

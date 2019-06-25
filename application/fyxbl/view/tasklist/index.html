@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+<head>
+    <meta charset="utf-8">
+    <!-- Loading Bootstrap -->
+    <link href="__CDN__/assets/css/backend{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}"
+          rel="stylesheet">
+    <script type="text/javascript">
+        var require = {
+            config: {$config | json_encode}
+        };
+    </script>
+    <title>{:__('Task list')}</title>
+</head>
+<body style="background: rgba(0, 0, 0, 0);">
+<div id="body" class="panel-body">
+    <h3 class="form-header">{:__('Task list')}<label style="color: #1e425d;font-size: 12px"></label>
+    </h3>
+    <hr>
+    <table id="table" class="table table-striped table-bordered table-hover" width="100%" >
+
+    </table>
+</div>
+<script src="__CDN__/assets/js/require{$Think.config.app_debug?'':'.min'}.js"
+        data-main="__CDN__/assets/js/require-backend{$Think.config.app_debug?'':'.min'}.js?v={$site.version}"></script>
+</body>
+</html>
+
+<script>
+
+    setInterval(function () {
+        var pageNumber = $('#table').bootstrapTable("getOptions").pageNumber - 1;
+        changeAllChannelRealTime(pageNumber);
+    }, 10000);
+
+    function changeAllChannelRealTime(pageNumber) {
+        pageNumber *= 5
+        $.ajax({
+            data: {
+                sort: 'id',
+                order: 'desc',
+                offset: pageNumber,
+                limit: 5,
+                filter: {},
+                op: {}
+            },
+            type: "get",
+            //url不用说了吧，否则不知道向服务器哪个接口发送并请求
+            url: '/fyxbl/tasklist/index',
+            async: true,
+            //超时时间
+            timeout: 30000,
+            success: function (msg) {
+
+                changeData(msg);
+
+            },
+            error: function () {
+                msgToast.error("查询数据出错");
+            }
+        });
+    };
+
+    function changeData(msg) {
+        //检测读取数组总数防止填充报错
+        var lenth = 5 - msg.rows.length;
+        for (var i = 0; i < 5 - lenth; i++) {
+            $('#table').bootstrapTable('updateRow', {
+                //i表示第几行，从0开始
+                index: i,
+                row: {
+
+                    title: msg.rows[i].title,
+                    status: msg.rows[i].status,
+                    msg: msg.rows[i].msg,
+                    url: msg.rows[i].url,
+
+
+                }
+            });
+        }
+    }
+</script>

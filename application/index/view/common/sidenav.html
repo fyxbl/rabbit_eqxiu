@@ -1,9 +1,24 @@
+
 <div class="sidenav">
     <ul class="list-group">
-        <li class="list-group-heading">{:__('User center')}</li>
-        <li class="list-group-item {:$config['actionname']=='index'?'active':''}"> <a href="{:url('user/index')}"><i class="fa fa-user-circle fa-fw"></i> {:__('User center')}</a> </li>
-        <li class="list-group-item {:$config['actionname']=='profile'?'active':''}"> <a href="{:url('user/profile')}"><i class="fa fa-user-o fa-fw"></i> {:__('Profile')}</a> </li>
-        <li class="list-group-item {:$config['actionname']=='changepwd'?'active':''}"> <a href="{:url('user/changepwd')}"><i class="fa fa-key fa-fw"></i> {:__('Change password')}</a> </li>
-        <li class="list-group-item {:$config['actionname']=='logout'?'active':''}"> <a href="{:url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i> {:__('Sign out')}</a> </li>
+
+        <li class="list-group-item {:$config['actionname']=='index'?'active':''}"> <a href="{:url('/index/user/index')}"><i class="fa fa-user-circle fa-fw"></i> {:__('User center')}</a> </li>
+
+        <li class="list-group-item {:$config['actionname']=='notice'?'active':''}"> <a href="{:url('/fyxbl/task/notice')}"><i class="fa fa-bullhorn fa-fw"></i> {:__('Bulletin information')}</a> </li>
+
+
+        <HR style="width: 70%">
+
+        <li class="list-group-item {:$config['actionname']=='rabbit'?'active':''}"> <a href="{:url('/fyxbl/task/rabbit')}"><i class="fa fa-gitlab"></i> {:__('Rabbit center')}</a> </li>
+        <li class="list-group-item {:$config['actionname']=='score'?'active':''}"> <a href="{:url('/fyxbl/task/score')}"><i class="fa fa-book"></i> {:__('Integral record')}</a> </li>
+        <li class="list-group-item {:$config['actionname']=='recharge'?'active':''}"> <a href="{:url('/fyxbl/task/recharge')}"><i class="fa fa-money"></i> {:__('Integral recharge')}</a> </li>
+
+        <HR style="width: 70%">
+
+        <li class="list-group-item {:$config['actionname']=='profile'?'active':''}"> <a href="{:url('/index/user/profile')}"><i class="fa fa-user-o"></i> {:__('Reset profile')}</a> </li>
+        <li class="list-group-item {:$config['actionname']=='changepwd'?'active':''}"> <a href="{:url('/index/user/changepwd')}"><i class="fa fa-key"></i> {:__('Change password')}</a> </li>
+        <li class="list-group-item {:$config['actionname']=='logout'?'active':''}"> <a href="{:url('/index/user/logout')}"><i class="fa fa-sign-out"></i> {:__('Sign out')}</a> </li>
+
+
     </ul>
 </div>

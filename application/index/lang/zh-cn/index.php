@@ -10,4 +10,5 @@ return [
     'Extension tips'  => 'FastAdmin提供强大的扩展中心，可直接在线安装和卸载插件，同时支持命令行一键操作',
     'Do not hesitate' => '不要犹豫',
     'Start to act'    => '开始行动',
+
 ];

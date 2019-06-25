@@ -1,0 +1,77 @@
+<style>
+    .red3 {
+        text-align: center;
+    }
+
+    .radio {
+        display: none   !important;
+    }
+
+    .radioInput {
+        background-color: rgb(255, 249, 243);
+        border-bottom-color: rgb(250, 185, 145);
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-image-outset: 0px;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+        border-left-color: rgb(250, 185, 145);
+        border-left-style: solid;
+        border-left-width: 2px;
+        border-right-color: rgb(250, 185, 145);
+        border-right-style: solid;
+        border-right-width: 2px;
+        border-top-color: rgb(250, 185, 145);
+        border-top-style: solid;
+        border-top-width: 2px;
+        display: block;
+        line-height: 36px;
+        width: 100px;
+    }
+
+    .radio:checked + .radioInput {
+        border: 2px solid #00A1E9;
+    }
+</style>
+
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">{:__('Integral recharge')}</h2>
+                    <form id="recharge-form" name="form" class="form-horizontal" role="form" data-toggle="validator"
+                          method="POST" action="{:url('fyxbl/task/recharge')}">
+                        <div class="center-block">
+
+                            <label class="demo--label ">
+                                <input class="radio" type="radio" name="radio" value="0.1">
+                                <span class="radioInput" style="text-align: center ; width: 100px;">{:__('Donation')}0.1</span>
+                            </label>
+                            <label class="demo--label ">
+                                <input class="radio" type="radio" name="radio" value="100">
+                                <span class="radioInput" style="text-align: center ; width: 100px;">{:__('Recharge')}100</span>
+                            </label>
+                            <label class="demo--label ">
+                                <input class="radio" type="radio" name="radio" value="300">
+                                <span class="radioInput" style="text-align: center ; width: 100px;">{:__('Recharge')}300</span>
+                            </label>
+                            <label class="demo--label ">
+                                <input class="radio" type="radio" name="radio" value="500">
+                                <span class="radioInput" style="text-align: center ; width: 100px;">{:__('Recharge')}500</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-info center-block">{:__('Ok')}</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
